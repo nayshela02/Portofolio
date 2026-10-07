@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheyya | Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a0f;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.1);--text:#f5f2f6;--mute:#a49fae;--accent:#f4a3bf;--accent2:#b79cff;--accent3:#ffd3a8;--btn:#f5f2f6;--btn-t:#0b0a0f;--glow:.55}
+[data-theme="light"]{--bg:#fbf6f8;--card:rgba(255,255,255,.7);--line:rgba(30,10,30,.12);--text:#1d1322;--mute:#6d6275;--accent:#c2476e;--accent2:#7a5cd6;--accent3:#e08a4f;--btn:#1d1322;--btn-t:#fbf6f8;--glow:.35}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--text);font:16px/1.7 "Space Grotesk",system-ui,sans-serif;overflow-x:hidden;transition:background .5s,color .5s}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--accent);color:#0b0a0f}
+/* aurora + grain */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:var(--glow);animation:float 18s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vmax;height:46vmax;background:var(--accent);top:-15%;left:-10%}
+.aurora i:nth-child(2){width:40vmax;height:40vmax;background:var(--accent2);bottom:-15%;right:-10%;animation-delay:-6s}
+.aurora i:nth-child(3){width:28vmax;height:28vmax;background:var(--accent3);top:40%;left:45%;opacity:calc(var(--glow)*.5);animation-delay:-11s}
+@keyframes float{to{transform:translate(8vw,6vh) scale(1.15)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.glow{position:fixed;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,var(--accent) 0,transparent 65%);opacity:.18;transform:translate(-50%,-50%);left:50%;top:50%}
+.bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3))}
+/* nav */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:4px;align-items:center;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:99px;padding:8px 10px 8px 18px;font-size:14px;max-width:96vw}
+nav b{margin-right:10px;letter-spacing:.18em;font-size:13px;white-space:nowrap;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a.l{color:var(--mute);text-decoration:none;padding:4px 10px;transition:.25s}
+nav a.l:hover{color:var(--text)}
+nav button,.btn{font:inherit;font-weight:700;border:0;border-radius:99px;cursor:pointer;background:var(--btn);color:var(--btn-t);padding:8px 18px;text-decoration:none;display:inline-block;transition:transform .25s,box-shadow .25s}
+.btn:hover,nav .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px var(--accent)}
+nav button.t{background:none;color:var(--text);padding:4px 10px;font-size:17px}
+section{max-width:1040px;margin:auto;padding:120px 24px 30px;position:relative}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:90px}
+.hero .bg{position:absolute;top:clamp(90px,15vh,150px);left:50%;transform:translateX(-50%);font-size:clamp(80px,21vw,270px);font-weight:400;font-family:"Instrument Serif",serif;font-style:italic;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--accent) 55%,transparent);white-space:nowrap;line-height:1;pointer-events:none;letter-spacing:-.03em}
+.frame{position:relative;width:min(270px,62vw);transition:transform .2s}
+.frame::before{content:"";position:absolute;inset:-14px;border-radius:200px 200px 28px 28px;border:1px dashed var(--accent);opacity:.6;animation:spin 30s linear infinite;animation-play-state:paused}
+.avatar{width:100%;aspect-ratio:3/4;border-radius:200px 200px 22px 22px;background:linear-gradient(160deg,var(--accent),var(--accent2)) ;background:url(foto.jpg) 45% 38%/cover,linear-gradient(160deg,var(--accent),var(--accent2));border:1px solid var(--line);position:relative;box-shadow:0 30px 80px -20px var(--accent)}
+.sticker{position:absolute;z-index:2;background:var(--btn);color:var(--btn-t);font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px;white-space:nowrap;animation:bob 4s ease-in-out infinite}
+.sticker.a{right:-34px;top:30px;rotate:8deg}
+.sticker.b{left:-40px;bottom:50px;rotate:-8deg;animation-delay:-2s;background:var(--accent);color:#0b0a0f}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.hero h1{font-size:clamp(34px,6.5vw,72px);margin-top:36px;line-height:1.02;position:relative;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{color:var(--mute);margin-top:14px;position:relative;font-size:17px;min-height:30px}
+.role span{color:var(--accent);border-right:2px solid var(--accent);padding-right:4px;animation:blink .8s step-end infinite}
+@keyframes blink{50%{border-color:transparent}}
+.scroll{margin-top:40px;font-size:12px;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+.scroll::after{content:"";display:block;width:1px;height:46px;margin:10px auto 0;background:linear-gradient(var(--accent),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;margin-top:40px;transform:rotate(-1.2deg);background:var(--card)}
+.marq div{display:flex;gap:40px;width:max-content;animation:mq 28s linear infinite;font-size:clamp(22px,3.5vw,38px)}
+.marq span{white-space:nowrap}.marq span:nth-child(even){color:var(--accent)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* headings */
+.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(40px,7vw,78px);letter-spacing:-.02em;line-height:1;margin-bottom:18px}
+h2 em{color:var(--accent)}
+h3.sub{font-family:"Instrument Serif",serif;font-weight:400;font-size:32px;margin:64px 0 20px;font-style:italic}
+.lead{color:var(--mute);max-width:580px;margin-bottom:36px;font-size:17px}
+/* bento */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:transform .3s,border-color .3s;transform-style:preserve-3d}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:var(--accent)}.card:hover::after{opacity:1}
+.card .n{font-family:"Instrument Serif",serif;font-size:54px;line-height:1;color:var(--accent);opacity:.8}
+.card h3{font-size:22px;margin:10px 0 6px}
+.card p,.card li{color:var(--mute);font-size:15px}
+.card ul{padding-left:18px}.card li{margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.tags span{border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:13px;color:var(--text);background:var(--card)}
+/* gallery */
+.gal{display:grid;gap:18px}
+.gal.photos{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.gal.posters{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.gal figure{background:#fff;padding:10px 10px 0;border-radius:6px;box-shadow:0 20px 40px -15px rgba(0,0,0,.5);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.gal figure:nth-child(odd){rotate:-2.5deg}.gal figure:nth-child(even){rotate:2deg}
+.gal figure:hover{transform:scale(1.07) rotate(0);rotate:0deg;z-index:3;position:relative}
+.gal img{display:block;width:100%;object-fit:cover;background:linear-gradient(135deg,var(--accent),var(--accent2));color:transparent}
+.photos img{aspect-ratio:3/4}.posters img{aspect-ratio:4/5}
+.gal figcaption{padding:10px 4px 12px;font-family:"Instrument Serif",serif;font-style:italic;font-size:17px;color:#2a2230;text-align:center}
+/* timeline */
+.tl{position:relative;padding-left:34px;border-left:1px dashed var(--line);margin-left:6px}
+.ach{position:relative;padding:0 0 38px}
+.ach::before{content:"";position:absolute;left:-41px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)}
+.ach time{font-family:"Instrument Serif",serif;font-size:36px;color:var(--accent);line-height:1}
+.ach h3{font-size:21px;margin:6px 0}
+.ach p{color:var(--mute);font-size:15px;max-width:620px}
+.ach a{display:inline-block;margin-top:10px;color:var(--text);font-size:14px;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:10px 0 36px}
+.stats div{border:1px solid var(--line);border-radius:24px;padding:22px 24px;background:var(--card)}
+.stats b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:56px;line-height:1.05;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats small{color:var(--mute)}
+/* contact */
+.contact h2{font-size:clamp(44px,8vw,96px)}
+.contact a.c{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:22px 4px;text-decoration:none;font-size:clamp(18px,3vw,28px);transition:.3s}
+.contact a.c:last-of-type{border-bottom:1px solid var(--line)}
+.contact a.c:hover{padding-left:18px;color:var(--accent)}
+.contact a.c small{color:var(--mute);font-size:12px;letter-spacing:.25em;text-transform:uppercase}
+.contact a.c::after{content:"↗";font-size:22px;color:var(--accent)}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:50px 24px;margin-top:70px}
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:620px){nav a.l:nth-of-type(n+3){display:none}.sticker.a{right:-10px}.sticker.b{left:-10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<nav aria-label="Navigasi utama">
+  <b>CHEYYA</b>
+  <a class="l" href="#achievement">Achievement</a>
+  <a class="l" href="#skills">What I Can Do</a>
+  <a class="l" href="#about">About</a>
+  <button class="t" id="theme" aria-label="Ganti tema">◐</button>
+  <a class="btn" href="#contact">Hire Me</a>
+</nav>
+
+<section class="hero" id="top">
+  <div class="bg" aria-hidden="true">Cheyya</div>
+  <div class="frame" id="frame">
+    <div class="avatar" role="img" aria-label="Foto Nayshela Zahra Luneta"></div>
+    <span class="sticker a">✦ C++ → Python</span>
+    <span class="sticker b">Informatika 2026</span>
+  </div>
+  <h1>Nayshela Zahra <em>Luneta</em></h1>
+  <p class="role">Mahasiswa Teknik Informatika · <span id="type"></span></p>
+  <div class="scroll">scroll</div>
+</section>
+
+<div class="marq" aria-hidden="true"><div>
+  <span class="serif">Edit Animasi</span><span class="serif">✦ Lettering ✦</span><span class="serif">Pemrograman</span><span class="serif">✦ C++ ✦</span><span class="serif">Python</span><span class="serif">✦ Cumlaude 2029 ✦</span>
+  <span class="serif">Edit Animasi</span><span class="serif">✦ Lettering ✦</span><span class="serif">Pemrograman</span><span class="serif">✦ C++ ✦</span><span class="serif">Python</span><span class="serif">✦ Cumlaude 2029 ✦</span>
+</div></div>
+
+<section id="skills">
+  <span class="eyebrow rv">01 — Skills</span>
+  <h2 class="rv">What I <em>Can Do</em></h2>
+  <p class="lead rv">Saya menggabungkan sisi kreatif dan logika: mengedit animasi, membuat lettering, dan belajar pemrograman dasar.</p>
+  <div class="grid">
+    <div class="card rv"><div class="n">01</div>
+      <h3>Edit Animasi</h3>
+      <p>Membuat animasi dan visual yang menarik untuk konten dan tugas.</p>
+      <div class="tags"><span>Canva</span><span>Lightroom</span><span>Ibis Paint X</span><span>CapCut</span></div>
+    </div>
+    <div class="card rv"><div class="n">02</div>
+      <h3>Lettering</h3>
+      <p>Merancang tulisan dan tipografi yang rapi dan enak dibaca.</p>
+      <div class="tags"><span>Canva</span></div>
+    </div>
+    <div class="card rv"><div class="n">03</div>
+      <h3>Pemrograman Dasar</h3>
+      <p>Belajar menyelesaikan masalah dengan kode, dari C++ lalu lanjut ke Python.</p>
+      <div class="tags"><span>C++</span><span>Python (sedang dipelajari)</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub rv">Cheyya's Journey</h3>
+  <div class="gal photos rv">
+    <figure><img src="kecil-1.jpg" alt="Foto Cheyya 1" loading="lazy"><figcaption>the pict of cheyya!</figcaption></figure>
+    <figure><img src="kecil-2.jpg" alt="Foto Cheyya 2" loading="lazy"><figcaption>the pict of cheyya!</figcaption></figure>
+    <figure><img src="kecil-3.jpg" alt="Foto Cheyya 3" loading="lazy"><figcaption>the pict of cheyya!</figcaption></figure>
+    <figure><img src="kecil-4.jpg" alt="Foto Cheyya 4" loading="lazy"><figcaption>the pict of cheyya!</figcaption></figure>
+    <figure><img src="kecil-5.jpg" alt="Foto Cheyya 5" loading="lazy"><figcaption>the pict of cheyya!</figcaption></figure>
+  </div>
+</section>
+
+<section id="achievement">
+  <span class="eyebrow rv">02 — Achievement</span>
+  <h2 class="rv">Langkah <em>Kecilku</em></h2>
+  <p class="lead rv">Pencapaian yang menunjukkan perkembanganku.</p>
+  <div class="tl">
+    <div class="ach rv"><time>2024</time><h3>Peserta Penyisihan OLTEKKIM</h3><p>HIMATEKK Fakultas Teknik, Universitas Jember. Olimpiade Teknik Kimia (OLTEKKIM) 2024, diselenggarakan online pada 14–15 September 2024.</p><a href="sertifikat-oltekkim.jpg" target="_blank" rel="noopener">Lihat sertifikat →</a></div>
+    <div class="ach rv"><time>2024–2026</time><h3>Juara Kelas</h3><p>SMA Negeri 1 Giri Taruna Bangsa Banyuwangi. Meraih juara kelas dari kelas 11 sampai kelas 12.</p></div>
+  </div>
+
+  <h3 class="sub rv">Karya</h3>
+  <div class="gal posters rv">
+    <figure><img src="poster-1.jpg" alt="Karya poster editing 1" loading="lazy"><figcaption>work results</figcaption></figure>
+    <figure><img src="poster-2.jpg" alt="Karya poster editing 2" loading="lazy"><figcaption>work results</figcaption></figure>
+    <figure><img src="poster-3.jpg" alt="Karya poster editing 3" loading="lazy"><figcaption>work results</figcaption></figure>
+    <figure><img src="poster-4.jpg" alt="Karya poster editing 4" loading="lazy"><figcaption>work results</figcaption></figure>
+  </div>
+</section>
+
+<section id="about">
+  <span class="eyebrow rv">03 — About</span>
+  <h2 class="rv">About <em>Me</em></h2>
+  <div class="stats rv">
+    <div><b data-n="2027">2027</b><small>Target lolos kedinasan</small></div>
+    <div><b data-n="2029">2029</b><small>Target lulus (3,5 tahun)</small></div>
+    <div><b>Cumlaude</b><small>Target predikat</small></div>
+  </div>
+  <p class="lead rv" style="max-width:660px">Saya Nayshela Zahra Luneta, biasa dipanggil Cheyya (NIM 26051204202), mahasiswa Teknik Informatika di Universitas Negeri Surabaya. Saya sedang mempelajari pemrograman dasar dari C++ sampai Python, dan ingin membangun karier di bidang teknologi atau kedinasan berbasis ilmu pemrograman.</p>
+  <div class="grid">
+    <div class="card rv"><h3>Pendidikan</h3><ul>
+      <li>Universitas Negeri Surabaya (2026–sekarang)</li>
+      <li>SMA Negeri 1 Giri Taruna Bangsa Banyuwangi</li>
+      <li>SMP Negeri 1 Rogojampi, Banyuwangi</li>
+      <li>SD Negeri 1 Rogojampi, Banyuwangi</li>
+      <li>TK Khadijah 2 Rogojampi, Banyuwangi</li>
+    </ul></div>
+    <div class="card rv"><h3>Aktivitas saat ini</h3><p>Belajar pemrograman dasar (C++ lalu Python), membangun portofolio, dan mempersiapkan diri untuk seleksi kedinasan 2027.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <span class="eyebrow rv">04 — Contact</span>
+  <h2 class="rv">Let's work <em>together</em> with me!</h2>
+  <p class="lead rv">Terbuka untuk kolaborasi dan proyek baru.</p>
+  <a class="c rv" href="mailto:nayshela02@gmail.com"><span><small>Email</small>nayshela02@gmail.com</span></a>
+  <a class="c rv" href="https://wa.me/6285707830241" target="_blank" rel="noopener"><span><small>WhatsApp</small>085707830241</span></a>
+  <a class="c rv" href="https://instagram.com/nayshelaln" target="_blank" rel="noopener"><span><small>Instagram</small>@nayshelaln</span></a>
+  <p style="margin-top:32px"><a class="btn" href="https://wa.me/6285707830241" target="_blank" rel="noopener">Kirim pesan ✦</a></p>
+</section>
+
+<footer>© 2026 Nayshela Zahra Luneta. Hak cipta dilindungi.</footer>
+
+<script>
+const r=document.documentElement;
+document.getElementById('theme').onclick=()=>{r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'};
+// scroll progress
+const bar=document.getElementById('bar');
+addEventListener('scroll',()=>{bar.style.width=(scrollY/(r.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+// cursor glow
+const g=document.getElementById('glow');
+addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+// card spotlight
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-b.left+'px');c.style.setProperty('--my',e.clientY-b.top+'px')}));
+// tilt avatar
+const f=document.getElementById('frame');
+addEventListener('pointermove',e=>{const x=(e.clientX/innerWidth-.5)*10,y=(e.clientY/innerHeight-.5)*-10;f.style.transform=`perspective(800px) rotateY(${x}deg) rotateX(${y}deg)`});
+// typing
+const words=['Creative Coder','Edit Animasi','Lettering Lover','C++ & Python Learner'],t=document.getElementById('type');
+let w=0,c=0,d=false;
+(function tick(){const s=words[w];c+=d?-1:1;t.textContent=s.slice(0,c);
+let ms=d?40:90;if(!d&&c===s.length){d=true;ms=1400}else if(d&&c===0){d=false;w=(w+1)%words.length;ms=300}setTimeout(tick,ms)})();
+// hide broken images gracefully (gradient placeholder shows)
+document.querySelectorAll('.gal img').forEach(i=>i.addEventListener('error',()=>{i.style.opacity='.0'}));
+</script>
+</body>
+</html>
